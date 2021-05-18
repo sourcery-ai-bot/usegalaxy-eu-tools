@@ -17,7 +17,7 @@ def update_file(fn):
             exit_code = 1
             unpinned.append(tool)
 
-    if len(unpinned) > 0:
+    if unpinned:
         print("Unpinned tools in %s:" % fn)
         for tool in unpinned:
             print("  %s/%s" % (tool['owner'], tool['name']))

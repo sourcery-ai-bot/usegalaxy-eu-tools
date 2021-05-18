@@ -43,8 +43,8 @@ On {date}, the tools on UseGalaxy.eu were updated by our automated tool update a
 
 """.format(date=today, build_number=os.environ.get('BUILD_NUMBER', '??')))
 
-for section in sections:
+for section, value in sections.items():
     print("## {}\n".format(section))
-    for (owner, repo, revision) in sorted(set(sections[section])):
+    for (owner, repo, revision) in sorted(set(value)):
         print("- {repo} was updated to [{revision}](https://toolshed.g2.bx.psu.edu/view/{owner}/{repo}/{revision})".format(**locals()))
     print('')

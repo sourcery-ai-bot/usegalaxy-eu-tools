@@ -19,9 +19,12 @@ def update_file(fn, owner=None, name=None, without=False):
         # If without, then if it is lacking, we should exec.
         logging.debug("Examining {owner}/{name}".format(**tool))
 
-        if without:
-            if 'revisions' in tool and not len(tool.get('revisions', [])) == 0:
-                continue
+        if (
+            without
+            and 'revisions' in tool
+            and len(tool.get('revisions', [])) != 0
+        ):
+            continue
 
         if not without and owner and tool['owner'] != owner:
             continue
